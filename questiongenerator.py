@@ -52,8 +52,6 @@ class QuestionGenerator:
         should selected from ["all", "sentences", "multiple_choice"].
         """
 
-        print("Generating questions...\n")
-
         qg_inputs, qg_answers = self.generate_qg_inputs(article, answer_style)
         generated_questions = self.generate_questions_from_inputs(qg_inputs)
 
@@ -394,36 +392,21 @@ class QAEvaluator:
 def print_qa(qa_list: List[Mapping[str, str]], show_answers: bool = True) -> None:
     """Formats and prints a list of generated questions and answers."""
 
+    #print("[")
+
+    questions = []
     for i in range(len(qa_list)):
         # wider space for 2 digit q nums
         space = " " * int(np.where(i < 9, 3, 4))
 
-        print(f"{i + 1}) Q: {qa_list[i]['question']}")
-
+        #print(f"{i + 1}) Q: {qa_list[i]['question']}")
+        question = qa_list[i]['question']
         answer = qa_list[i]["answer"]
 
-        # print a list of multiple choice answers
-        if type(answer) is list:
+        questions.append({'question' : question, 'answer' : answer})
+       
 
-            if show_answers:
-                print(
-                    f"{space}A: 1. {answer[0]['answer']} "
-                    f"{np.where(answer[0]['correct'], '(correct)', '')}"
-                )
-                for j in range(1, len(answer)):
-                    print(
-                        f"{space + '   '}{j + 1}. {answer[j]['answer']} "
-                        f"{np.where(answer[j]['correct']==True,'(correct)', '')}"
-                    )
+        #print('{"question" : %s, "answer" : %s }' % (question, answer))
 
-            else:
-                print(f"{space}A: 1. {answer[0]['answer']}")
-                for j in range(1, len(answer)):
-                    print(f"{space + '   '}{j + 1}. {answer[j]['answer']}")
-
-            print("")
-
-        # print full sentence answers
-        else:
-            if show_answers:
-                print(f"{space}A: {answer}\n")
+    #print("]")
+    return questions

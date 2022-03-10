@@ -30,4 +30,4 @@ if __name__ == "__main__":
         answer_style=args.answer_style,
         use_evaluator=args.use_qa_eval
     )
-    print_qa(qa_list, show_answers=args.show_answers)
+    print(print_qa(qa_list, show_answers=args.show_answers))
