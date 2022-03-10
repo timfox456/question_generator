@@ -6,7 +6,16 @@ This repo is forked from https://github.com/AMontgomerie/question_generator
 
 ## Requirements
 
-[Requirements](./requirments.md)
+[Requirements](./requirements.md)
+
+
+## Setup
+
+Run requirements.txt
+
+```bash
+pip -r requirements.txt
+```
 
 
 ## How to run
