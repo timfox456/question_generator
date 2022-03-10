@@ -25,6 +25,9 @@ python main.py
 ```
 
 
+Please be patient as invoking the model can take about 10-20s per row.
+
+
 
 ## How to run original question answerer
 
